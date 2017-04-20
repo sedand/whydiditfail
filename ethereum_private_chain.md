@@ -23,8 +23,8 @@ Let's build a private ethereum chain which only our defined nodes connect to
 `geth --networkid 1234 --nodiscover console` and then running: `admin.nodeInfo.protocols.eth`
 - (You can exit the console with 'exit' ... who would have thought ;) )
 
-*genesis.json*
-`
+*genesis.json*   
+```
   {
     "config": {
         "chainId": 2217,
@@ -39,7 +39,7 @@ Let's build a private ethereum chain which only our defined nodes connect to
         "f41c74c9ae680c1aa78f42e5647a62f353b7bdde": { "balance": "400000" }
     }
 }
-`
+```
 
 ##### Autodiscovery of the nodes using the `bootnode` tool didn't work
 - Start simple and manually connect the nodes
@@ -56,12 +56,12 @@ Let's build a private ethereum chain which only our defined nodes connect to
 - It has to be placed in the data directory (default: ~/.ethereum/static-nodes.json)
 - It's syntax is a simple array containing the enode id's to connect to.
 
-*static-nodes.json*
-`
+*static-nodes.json*   
+```
 [
   "enode://750ade65e0f208aa48d9314306fe6d66ec26f83cff39ee9fbf710c1f8398b5357e2c272f02b0df2072041fe9c3b6017cf11121f4169fa2718b3801b441e056ae@[207.154.123.234]:30303"
 ]
-`
+```
 
 - Check that the enode line contains the target nodes IP-Address and port at the end. Verify that it is correct.
 
@@ -71,17 +71,17 @@ Let's build a private ethereum chain which only our defined nodes connect to
 - Start up the second node (with the static-nodes.json)
   `./geth --networkid 1234 --nodiscover --verbosity 9 console`
 
-- We see log output on the first node like:
-`
+- We see log output on the first node like:   
+```
   TRACE[04-20|14:52:57] Accepted connection                      addr=207.154.123.65:48582
   DEBUG[04-20|14:52:57] Adding p2p peer                          id=53511b4a8eb2ffe7 name=Geth/v1.6.0-stable-f...                         addr=207.154.123.65:48582 peers=1
   TRACE[04-20|14:52:57] Starting protocol eth/63                 id=53511b4a8eb2ffe7 conn=inbound
   DEBUG[04-20|14:52:57] Ethereum peer connected                  id=53511b4a8eb2ffe7 conn=inbound name=Geth/v1.6.0-stable-facc47cb/linux-amd64/go1.8.1
   TRACE[04-20|14:52:57] Registering sync peer                    peer=53511b4a8eb2ffe7
-`
+```
 
-- Verify by running `admin.peers` in the console of both nodes.
-`
+- Verify by running `admin.peers` in the console of both nodes.   
+```
   [{
     caps: ["eth/62", "eth/63"],
     id: "53511b4a8eb2ffe72e8431b73a55e165a73fd9a8ad89bebc798ffdcac471b2ee08645a96c1961630bcaa45d2d3ca3325770cf4029f44fbd51806bcfedfe7c559",
@@ -98,7 +98,7 @@ Let's build a private ethereum chain which only our defined nodes connect to
       }
     }
 }]
-`
+```
 
 #### Nodes are connected! Let's try mining
 
@@ -107,15 +107,15 @@ Let's build a private ethereum chain which only our defined nodes connect to
 `./geth --networkid 1234 --nodiscover --verbosity 9 --mine console`
 
 - the mining node is only writing single lines containing:
-`
+```
 INFO [04-20|15:01:50] Generating DAG in progress               epoch=1 percentage=0  elapsed=32.719s
 DEBUG[04-20|15:02:06] Recalculated downloader QoS values       rtt=20s confidence=1.000 ttl=1m0s
 INFO [04-20|15:02:26] Generating DAG in progress               epoch=1 percentage=1  elapsed=1m8.585s
-`
+```
 - Check the server you are running on. Probably it's too low on memory. Try mining on a faster computer first to remove this problem.
 
-mining node (running on fast pc):
-`
+mining node (running on fast pc):   
+```
 INFO [04-20|16:58:00] Generating ethash verification cache     epoch=1 percentage=78 elapsed=3.016s
 INFO [04-20|16:58:01] Generated ethash verification cache      epoch=1 elapsed=3.894s
 TRACE[04-20|16:58:04] Ethash nonce found and reported          miner=0 attempts=249439 nonce=5383070798337378377
@@ -127,16 +127,15 @@ TRACE[04-20|16:58:04] Propagated block                         hash=85f23f…621
 TRACE[04-20|16:58:04] Announced block                          hash=85f23f…6218aa recipients=1 duration=2562047h47m16.854s
 TRACE[04-20|16:58:04] Announced block                          hash=85f23f…6218aa recipients=0 duration=2562047h47m16.854s
 TRACE[04-20|16:58:04] Started ethash search for new nonces     miner=0 seed=8692281432698145952
-`
+```
 
-node1 receiving the mined blocks:
-`
+node1 receiving the mined blocks:   
+```
 DEBUG[04-20|14:58:06] Importing propagated block               peer=750ade65e0f208aa number=198 hash=f85541…2cfee4
 TRACE[04-20|14:58:06] Propagated block                         hash=f85541…2cfee4                                                                                                              recipients=0 duration=10.410ms
 DEBUG[04-20|14:58:06] Trie cache stats after commit            misses=186 unloads=4
 DEBUG[04-20|14:58:06] Inserted new block                       number=198 hash=f85541…2cfee4                                                                                                              uncles=0 txs=0  gas=0      elapsed=10.110ms
 INFO [04-20|14:58:06] Imported new chain segment               blocks=1   txs=0  mgas=0.000 elapsed=10.614ms     mgasps=0.000 number=198 hash=f85541…2cfee4
-TRACE[04-20|14:58:06] Announced block                          hash=f85541…2cfee4                                                                                                              recipients=0 duration=21.544ms
-`
+TRACE[04-20|14:58:06] Announced block                          hash=f85541…2cfee4                                           ```
 
 #### We have a working, private ethereum blockchain with 2 connected nodes, one of which is mining blocks!
