@@ -110,13 +110,15 @@ Let's build a private ethereum chain which only our defined nodes connect to
 - Start it again with added `--mine` flag. (You can also add `--minerthreads 1` to get a clean logflow for now)
 `./geth --networkid 1234 --nodiscover --verbosity 9 --mine console`
 
-- the mining node is only writing single lines containing:
+##### The mining node is only writing single lines containing
 ```
 INFO [04-20|15:01:50] Generating DAG in progress               epoch=1 percentage=0  elapsed=32.719s
 DEBUG[04-20|15:02:06] Recalculated downloader QoS values       rtt=20s confidence=1.000 ttl=1m0s
 INFO [04-20|15:02:26] Generating DAG in progress               epoch=1 percentage=1  elapsed=1m8.585s
 ```
-- Check the server you are running on. Probably it's too low on memory. Try mining on a faster computer first to remove this problem.
+- Check the server you are running on. Probably it's too low on memory.
+
+##### Try mining on a faster computer to remove this problem
 
 mining node (running on fast pc):   
 ```
