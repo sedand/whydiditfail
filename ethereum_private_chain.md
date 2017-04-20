@@ -5,6 +5,10 @@
 ### Goal
 Let's build a private ethereum chain which only our defined nodes connect to
 
+### Setup
+- geth-alltools-linux-386-1.6.0-facc47cb
+- DigitalOcean 5$ debian boxes and a local machine
+
 ### Private Chain
 
 #### Nodes don't connect
