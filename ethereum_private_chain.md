@@ -142,4 +142,4 @@ DEBUG[04-20|14:58:06] Inserted new block                       number=198 hash=f
 INFO [04-20|14:58:06] Imported new chain segment               blocks=1   txs=0  mgas=0.000 elapsed=10.614ms     mgasps=0.000 number=198 hash=f85541…2cfee4
 TRACE[04-20|14:58:06] Announced block                          hash=f85541…2cfee4                                           ```
 
-#### We have a working, private ethereum blockchain with 2 connected nodes, one of which is mining blocks!
+# We have a working, private ethereum blockchain with 2 connected nodes, one of which is mining blocks!
