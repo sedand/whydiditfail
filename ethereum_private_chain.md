@@ -107,6 +107,7 @@ Let's build a private ethereum chain which only our defined nodes connect to
 #### Nodes are connected! Let's try mining
 
 - Exit the console of the second node. (exit)
+- If you haven't done so, create an account (etherbase): `./geth account new`
 - Start it again with added `--mine` flag. (You can also add `--minerthreads 1` to get a clean logflow for now)
 `./geth --networkid 1234 --nodiscover --verbosity 9 --mine console`
 
